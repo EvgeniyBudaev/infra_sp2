@@ -10,12 +10,16 @@
 
 - Клонируем репозиторий и перейдем в него
 ```python
- docker push ebudaev/yamdb:v1
  git clone https://github.com/EvgeniyBudaev/infra_sp2
  cd infra_sp2/
 ```
 
 - Установите Docker (https://docs.docker.com/get-started/)
+
+- Клонируем образ
+```python
+ docker push ebudaev/yamdb:v1
+```
 
 - Запуск приложения
 
@@ -23,13 +27,13 @@
   docker-compose up -d --build
 ```
 
-- Выполнить миграции и создание суперпользователя
+- Выполнение миграции и создание суперпользователя
 
 ```python
   docker-compose exec web python manage.py makemigrations
   docker-compose exec web python manage.py migrate --noinput
   docker-compose exec web python manage.py createsuperuser
-  docker-compose exec web python manage.py collectstatic
+  docker-compose exec web python manage.py collectstatic --no-input
 ```
 
 - Заполнение базы начальными данными
